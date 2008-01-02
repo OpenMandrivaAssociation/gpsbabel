@@ -7,6 +7,7 @@ Group:		File tools
 
 Source:		http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 Url:		http://%{name}.sourceforge.net
+BuildRoot:	%_tmppath/%name-%version-root
 BuildRequires:	expat-devel libusb-devel zlib-devel
 
 %description
