@@ -11,7 +11,6 @@ BuildRoot:	%_tmppath/%name-%version-root
 BuildRequires:	expat-devel libusb-devel zlib-devel
 
 %description
-
 GPSBabel converts waypoints, tracks, and routes from one format to another, 
 whether that format is a common mapping format like Delorme, Streets and 
 Trips, or even a serial upload or download to a GPS unit such as those from 
