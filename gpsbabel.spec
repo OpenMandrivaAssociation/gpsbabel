@@ -1,12 +1,14 @@
 Summary:	GPSBabel converts GPS data from one format to another	
 Name:		gpsbabel
-Version:	1.3.4
-Release:	%mkrel 3
-License:	GPL
+Version:	1.3.6
+Release:	%mkrel 1
+License:	GPLv2+
 Group:		File tools		
 
-Source:		http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-Url:		http://%{name}.sourceforge.net
+Source:		http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Patch0:		gpsbabel-1.3.5-autoconf.patch
+Patch1:		gpsbabel-1.3.6-fix-str-fmt.patch
+URL:		http://%{name}.sourceforge.net
 BuildRoot:	%_tmppath/%name-%version-root
 BuildRequires:	expat-devel libusb-devel zlib-devel
 
@@ -22,9 +24,14 @@ and hardware we choose to use.
 %prep
 %setup -q
 perl -pi -e 's|^INSTALL_TARGETDIR=/usr/local/|INSTALL_TARGETDIR=\$(DESTDIR)%_usr|' Makefile
+%patch0 -p1
+%patch1
+
+# fix bad execute perms
+%{__chmod} a-x *.c *.h
 
 %build
-%configure --with-zlib=system
+%configure2_5x --with-zlib=system
 %make
 
 %install
