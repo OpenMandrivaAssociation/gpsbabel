@@ -1,15 +1,14 @@
 Summary:	GPSBabel converts GPS data from one format to another
 Name:		gpsbabel
-Version:	1.4.2
-Release:	%mkrel 1
+Version:	1.4.3
+Release:	1
 License:	GPLv2+
 Group:		File tools
-Source:		http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+URL:		http://www.gpsbabel.org/
+Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:       %{name}.desktop
 Source2:       %{name}.png
 Patch0:		gpsbabel-1.3.5-autoconf.patch
-URL:		http://www.gpsbabel.org/
-BuildRoot:	%_tmppath/%name-%version-root
 BuildRequires:	expat-devel
 BuildRequires:	libusb-devel
 BuildRequires:	zlib-devel
@@ -35,9 +34,10 @@ Requires:	%{name} = %{version}-%{release}
 Qt GUI interface for GPSBabel.
 
 %prep
+
 %setup -q
 perl -pi -e 's|^INSTALL_TARGETDIR=/usr/local/|INSTALL_TARGETDIR=\$(DESTDIR)%_usr|' Makefile
-%patch0 -p1 -b .autoconf
+%patch0 -p0 -b .autoconf
 
 # fix bad execute perms
 %{__chmod} a-x *.c *.h
@@ -47,7 +47,7 @@ perl -pi -e 's|^INSTALL_TARGETDIR=/usr/local/|INSTALL_TARGETDIR=\$(DESTDIR)%_usr
 %make
 pushd gui
 %qmake_qt4
-lrelease *.ts
+%qt4bin/lrelease *.ts
 %make
 popd
 
@@ -70,17 +70,12 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 
 %find_lang %{name}
 
-%clean
-rm -fr %buildroot
-
 %files
-%defattr(-,root,root)
 %doc README* COPYING
 %{_bindir}/%{name}
 
 %files gui -f %{name}.lang
-%defattr(-,root,root,-)
-%doc gui/{AUTHORS,COPYING,README*,TODO} gui/help/gpsbabel.html
+%doc gui/{AUTHORS,COPYING*,README*,TODO} gui/help/gpsbabel.html
 %{_bindir}/gpsbabelfe-bin
 %{_datadir}/applications/*
 %{_datadir}/icons/hicolor/256x256/apps/*
