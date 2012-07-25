@@ -68,8 +68,6 @@ desktop-file-install \
 install -m 0755 -d %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/
 install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/
 
-%find_lang %{name}
-
 %files
 %doc README* COPYING
 %{_bindir}/%{name}
