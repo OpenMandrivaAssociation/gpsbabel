@@ -72,7 +72,7 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 %doc README* COPYING
 %{_bindir}/%{name}
 
-%files gui -f %{name}.lang
+%files gui
 %doc gui/{AUTHORS,COPYING*,README*,TODO} gui/help/gpsbabel.html
 %{_bindir}/gpsbabelfe-bin
 %{_datadir}/applications/*
