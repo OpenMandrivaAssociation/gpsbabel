@@ -77,3 +77,50 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 %{_bindir}/gpsbabelfe-bin
 %{_datadir}/applications/*
 %{_datadir}/icons/hicolor/256x256/apps/*
+
+
+%changelog
+* Thu Jul 26 2012 Oden Eriksson <oeriksson@mandriva.com> 1.4.3-1
++ Revision: 811058
+- duh...
+- No translations found for gpsbabel
+- 1.4.3
+
+* Mon Oct 31 2011 Andrey Bondrov <abondrov@mandriva.org> 1.4.2-1
++ Revision: 707998
+- New version 1.4.2, now we have Qt4 frontend
+
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 1.3.6-3mdv2011.0
++ Revision: 619250
+- the mass rebuild of 2010.0 packages
+
+* Fri Sep 11 2009 Thierry Vignaud <tv@mandriva.org> 1.3.6-2mdv2010.0
++ Revision: 437808
+- rebuild
+
+* Thu Jan 08 2009 Emmanuel Andry <eandry@mandriva.org> 1.3.6-1mdv2009.1
++ Revision: 327269
+- New version 1.3.6
+- use configure2_5x
+- reimport broken P0 from Fedora
+- diff P1 to fix str fmt
+
+* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 1.3.4-3mdv2009.0
++ Revision: 246546
+- rebuild
+
+* Tue Feb 12 2008 Thierry Vignaud <tv@mandriva.org> 1.3.4-1mdv2008.1
++ Revision: 165954
+- fix spacing at top of description
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+* Thu Sep 06 2007 Emmanuel Andry <eandry@mandriva.org> 1.3.4-1mdv2008.0
++ Revision: 81316
+- New version
+
+  + Nicolas Vigier <nvigier@mandriva.com>
+    - Import gpsbabel
+
