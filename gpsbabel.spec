@@ -1,4 +1,4 @@
-Summary:	GPSBabel converts GPS data from one format to another
+Summary:	Converts GPS data from one format to another
 Name:		gpsbabel
 Version:	1.4.3
 Release:	1
