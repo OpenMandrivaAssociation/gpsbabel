@@ -1,7 +1,7 @@
 Summary:	Converts GPS data from one format to another
 Name:		gpsbabel
 Version:	1.4.3
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		File tools
 URL:		http://www.gpsbabel.org/
