@@ -1,7 +1,7 @@
 Summary:	Converts GPS data from one format to another
 Name:		gpsbabel
-Version:	1.4.3
-Release:	3
+Version:	1.5.2
+Release:	1
 License:	GPLv2+
 Group:		File tools
 URL:		http://www.gpsbabel.org/
@@ -10,7 +10,7 @@ Source1:       %{name}.desktop
 Source2:       %{name}.png
 Patch0:		gpsbabel-1.3.5-autoconf.patch
 BuildRequires:	expat-devel
-BuildRequires:	libusb-devel
+BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	zlib-devel
 BuildRequires:	qt4-devel
 BuildRequires:	desktop-file-utils
@@ -37,7 +37,7 @@ Qt GUI interface for GPSBabel.
 
 %setup -q
 perl -pi -e 's|^INSTALL_TARGETDIR=/usr/local/|INSTALL_TARGETDIR=\$(DESTDIR)%_usr|' Makefile
-%patch0 -p0 -b .autoconf
+#patch0 -p0 -b .autoconf
 
 # fix bad execute perms
 %{__chmod} a-x *.c *.h
