@@ -11,6 +11,7 @@ Source2:       %{name}.png
 Patch0:		gpsbabel-1.3.5-autoconf.patch
 BuildRequires:	expat-devel
 BuildRequires:	pkgconfig(libusb-1.0)
+BuildRequires:	pkgconfig(QtWebKit)
 BuildRequires:	zlib-devel
 BuildRequires:	qt4-devel
 BuildRequires:	desktop-file-utils
