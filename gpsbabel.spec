@@ -1,6 +1,6 @@
 Summary:	Converts GPS data from one format to another
 Name:		gpsbabel
-Version:	1.5.2
+Version:	1.5.4
 Release:	1
 License:	GPLv2+
 Group:		File tools
@@ -8,12 +8,14 @@ URL:		http://www.gpsbabel.org/
 Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:       %{name}.desktop
 Source2:       %{name}.png
-Patch0:		gpsbabel-1.3.5-autoconf.patch
+Patch1:		gpsbabel-1.5.4-qt.patch
 BuildRequires:	expat-devel
 BuildRequires:	pkgconfig(libusb-1.0)
-BuildRequires:	pkgconfig(QtWebKit)
 BuildRequires:	zlib-devel
-BuildRequires:	qt4-devel
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(Qt5)
+BuildRequires:	cmake(Qt5Core)
+BuildRequires:	cmake(Qt5Gui)
 BuildRequires:	desktop-file-utils
 
 %description
@@ -38,17 +40,19 @@ Qt GUI interface for GPSBabel.
 
 %setup -q
 perl -pi -e 's|^INSTALL_TARGETDIR=/usr/local/|INSTALL_TARGETDIR=\$(DESTDIR)%_usr|' Makefile
-#patch0 -p0 -b .autoconf
+%apply_patches
 
 # fix bad execute perms
 %{__chmod} a-x *.c *.h
 
 %build
-%configure2_5x --with-zlib=system
+export CC=gcc
+export CXX=g++
+%configure --with-zlib=system
 %make
 pushd gui
-%qmake_qt4
-%qt4bin/lrelease *.ts
+%qmake_qt5
+%_qt5_bindir/lrelease *.ts
 %make
 popd
 
