@@ -16,7 +16,9 @@ BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5)
 BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5Gui)
+BuildRequires:	cmake(Qt5Network)
 BuildRequires:	cmake(Qt5WebEngineWidgets)
+BuildRequires:	cmake(Qt5Xml)
 BuildRequires:	desktop-file-utils
 
 %description
