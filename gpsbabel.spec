@@ -43,7 +43,7 @@ Qt GUI interface for GPSBabel.
 
 %setup -q
 perl -pi -e 's|^INSTALL_TARGETDIR=/usr/local/|INSTALL_TARGETDIR=\$(DESTDIR)%_usr|' Makefile
-%apply_patches
+%autopatch -p1
 
 # fix bad execute perms
 %{__chmod} a-x *.c *.h
