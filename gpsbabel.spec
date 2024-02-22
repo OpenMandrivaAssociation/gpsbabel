@@ -19,6 +19,7 @@ BuildRequires:	cmake(Qt5Gui)
 BuildRequires:	cmake(Qt5Network)
 BuildRequires:	cmake(Qt5WebEngineWidgets)
 BuildRequires:	cmake(Qt5Xml)
+BuildRequires:	cmake(Qt5SerialPort)
 BuildRequires:	desktop-file-utils
 
 %description
