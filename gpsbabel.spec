@@ -9,8 +9,8 @@ Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:       %{name}.desktop
 Source2:       %{name}.png
 #Patch1:		gpsbabel-1.5.4-qt.patch
-BuildRequires:	expat-devel
 BuildRequires:	pkgconfig(libusb-1.0)
+BuildRequires:	pkgconfig(shapelib)
 BuildRequires:	zlib-devel
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5)
