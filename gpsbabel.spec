@@ -1,6 +1,6 @@
 Summary:	Converts GPS data from one format to another
 Name:		gpsbabel
-Version:	1.5.4
+Version:	1.9.0
 Release:	1
 License:	GPLv2+
 Group:		File tools
@@ -8,7 +8,7 @@ URL:		http://www.gpsbabel.org/
 Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:       %{name}.desktop
 Source2:       %{name}.png
-Patch1:		gpsbabel-1.5.4-qt.patch
+#Patch1:		gpsbabel-1.5.4-qt.patch
 BuildRequires:	expat-devel
 BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	zlib-devel
@@ -42,32 +42,32 @@ Qt GUI interface for GPSBabel.
 %prep
 
 %setup -q
-perl -pi -e 's|^INSTALL_TARGETDIR=/usr/local/|INSTALL_TARGETDIR=\$(DESTDIR)%_usr|' Makefile
 %autopatch -p1
-
-# fix bad execute perms
-%{__chmod} a-x *.c *.h
 
 %build
 export CC=gcc
 export CXX=g++
-%configure --with-zlib=system
-%make
-pushd gui
-%qmake_qt5
-%_qt5_bindir/lrelease *.ts
-%make
-popd
+%cmake_qt5 \
+  -DGPSBABEL_WITH_LIBUSB=pkgconfig \
+  -DGPSBABEL_WITH_ZLIB=pkgconfig \
+  -DGPSBABEL_WITH_SHAPELIB=pkgconfig
+
+%make_build
+
+#pushd gui
+#qmake_qt5
+#_qt5_bindir/lrelease *.ts
+#make
+#popd
 
 %install
-%__install -d %{buildroot}%{_bindir}
-%makeinstall_std
-%makeinstall_std -C gui
+#make_install -C build
 
 %__install -m 0755 -d %{buildroot}%{_bindir}/
-%__install -m 0755 -p gui/objects/gpsbabelfe-bin %{buildroot}%{_bindir}/
-%__install -m 0755 -d %{buildroot}%{translationdir}/
-%__install -m 0644 -p gui/gpsbabel*_*.qm %{buildroot}%{translationdir}/
+
+%__install -m 0755 -p build/gpsbabel %{buildroot}%{_bindir}/
+
+%__install -m 0755 -p build/gui/GPSBabelFE/gpsbabelfe %{buildroot}%{_bindir}/
 
 desktop-file-install \
         --dir %{buildroot}/%{_datadir}/applications \
@@ -81,8 +81,8 @@ install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 %{_bindir}/%{name}
 
 %files gui
-%doc gui/{AUTHORS,COPYING*,README*,TODO} gui/help/gpsbabel.html
-%{_bindir}/gpsbabelfe-bin
+%doc gui/{AUTHORS,COPYING*,README*,TODO}
+%{_bindir}/gpsbabelfe
 %{_datadir}/applications/*
 %{_datadir}/icons/hicolor/256x256/apps/*
 

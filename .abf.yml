@@ -1,6 +1,3 @@
-removed_sources:
-  gpsbabel-1.4.3.tar.gz: bd6266eeef38755d49e6dc17330b58c68e5a32d7
-  gpsbabel-1.5.2.tar.gz: 4962a7e98bbfcbfd59baa970e9b33d1300053004
 sources:
-  gpsbabel-1.5.4.tar.gz: 628a94dd376253a1aadf0e34d694acd4d6ccaec9
+  gpsbabel-1.9.0.tar.gz: 8b35b9fff5220f1ad9a4276899d7b9c56c1c3ae4
   gpsbabel.png: 405ad92e56f152395c41103838acb09d5977c327
