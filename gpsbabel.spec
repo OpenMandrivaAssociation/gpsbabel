@@ -4,7 +4,7 @@ Version:	1.9.0
 Release:	1
 License:	GPLv2+
 Group:		File tools
-URL:		http://www.gpsbabel.org/
+URL:		https://www.gpsbabel.org/
 Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:       %{name}.desktop
 Source2:       %{name}.png
