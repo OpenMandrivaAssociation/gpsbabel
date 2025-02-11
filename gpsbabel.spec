@@ -1,25 +1,28 @@
 Summary:	Converts GPS data from one format to another
 Name:		gpsbabel
-Version:	1.9.0
+Version:	1.10.0
 Release:	1
 License:	GPLv2+
 Group:		File tools
 URL:		https://www.gpsbabel.org/
-Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# needs to be downloaded from https://www.gpsbabel.org/
+#Source0:	http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.gz
 Source1:       %{name}.desktop
 Source2:       %{name}.png
-#Patch1:		gpsbabel-1.5.4-qt.patch
 BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	pkgconfig(shapelib)
 BuildRequires:	zlib-devel
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(Qt5)
-BuildRequires:	cmake(Qt5Core)
-BuildRequires:	cmake(Qt5Gui)
-BuildRequires:	cmake(Qt5Network)
-BuildRequires:	cmake(Qt5WebEngineWidgets)
-BuildRequires:	cmake(Qt5Xml)
-BuildRequires:	cmake(Qt5SerialPort)
+BuildRequires:	cmake(Qt6)
+BuildRequires:	cmake(Qt6Core)
+BuildRequires:	cmake(Qt6Gui)
+BuildRequires:	cmake(Qt6Network)
+BuildRequires:	cmake(Qt6WebEngineWidgets)
+BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	cmake(Qt6WebChannel)
+BuildRequires:	cmake(Qt6Xml)
+BuildRequires:	cmake(Qt6SerialPort)
 BuildRequires:	desktop-file-utils
 
 %description
@@ -42,13 +45,12 @@ Qt GUI interface for GPSBabel.
 
 %prep
 
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 export CC=gcc
 export CXX=g++
-%cmake_qt5 \
+%cmake \
   -DGPSBABEL_WITH_LIBUSB=pkgconfig \
   -DGPSBABEL_WITH_ZLIB=pkgconfig \
   -DGPSBABEL_WITH_SHAPELIB=pkgconfig
